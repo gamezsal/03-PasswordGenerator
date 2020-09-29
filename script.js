@@ -2,6 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 // Variable Declaration
+var CharLength = 0;
 var CharTypeSpecial = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "=","|", "(", ")", "{","}", "[","]", ":",";", "<", ">", "?", "/"]
 var CharTypeLc = ["a", "b", "c", "d", "e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 var CharTypeUc = ["A", "B", "C", "D", "E", "F", "G", "H","I","J", "K","L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y","Z"]
@@ -17,5 +18,22 @@ function writePassword() {
 
 }
 
+// Prompt Password Length (8-128 Characters)
+function setPassword() {
+var PassLength = parseInt(prompt("How many characters would you like your password to contain?"))
+  if (isNaN(PassLength)){
+    alert("Please try again, input a number.");
+    setPassword()
+  } else if (PassLength < 8 || PassLength > 128){
+    alert("Please try a number between 8 and 128.");
+    setPassword()
+  }
+var SpecialChar = confirm("Would you like include Special Characters in your password?");
+}
+
 // Add event listener to generate button
+
+
+
+setPassword()
 generateBtn.addEventListener("click", writePassword);
