@@ -37,50 +37,41 @@ var CharTypePassword = "";
 
 // Prompt Password Length (8-128 Characters)
 function CharTypeUserInput(){
-TotalCharTypes = "";
 CharTypeLength = parseInt(prompt("How many characters would you like your password to contain?"))
 CharTypeUcConfirm = confirm("Would you like to include Upper case Characters in your Password?")
 CharTypeLcConfirm = confirm("Would you like to include Lower case Characters in your Password?")
 CharTypeNumConfirm = confirm("Would you like to include Numbers in your Password?")
 CharTypeSpecialConfirm = confirm("Would you like to include Special Characters in your Password?")
+TotalCharTypes = "";
 }
-  
 
 while (TotalCharTypes === "" || CharTypeLength < 8 || CharTypeLength > 128){
-    CharTypeUserInput();
-// User Confirmation Inputs
+  CharTypeUserInput();
 
-if(CharTypeUcConfirm === true){
+if(TotalCharTypes === "" || CharTypeLength < 8 || CharTypeLength > 128 ){
+alert("Please try again, you must enter numbers and specify the length of charachters between 8-128.")
+}
+// User Confirmation Inputs
+if(CharTypeUcConfirm === false){
   TotalCharTypes = TotalCharTypes + CharTypeUcList;
 }
 
-if(CharTypeLcConfirm === true){
+if(CharTypeLcConfirm === false){
   TotalCharTypes = TotalCharTypes + CharTypeLcList;
 }
 
-if(CharTypeNumConfirm === true){
+if(CharTypeNumConfirm === false){
   TotalCharTypes = TotalCharTypes + CharTypeNumList;
   }
 
-if(CharTypeSpecialConfirm === true){
+if(CharTypeSpecialConfirm === false){
   TotalCharTypes = TotalCharTypes + CharTypeSpecialList;
-  }
-
-  if(TotalCharTypes === "" || CharTypeLength < 8 || CharTypeLength > 128){
-    alert("Please enter a number")
-  }
-}
-
-console.log(CharTypePassword)
+  } 
+} 
 
 for(var i = CharTypeLength; i > 0; i--){
   ChartTypeIndex = Math.floor(Math.random() * TotalCharTypes.length);
   CharTypeAdder = TotalCharTypes[ChartTypeIndex];
   CharTypePassword = CharTypePassword + CharTypeAdder;
- }
-return(CharTypePassword);
-   
-  }
-
-  // generatePassword()
-
+ }return(CharTypePassword);   
+}
